@@ -4,9 +4,9 @@ class User < ActiveRecord::Base
     has_many :candies, through: :purchases
     
 
-    def appetite
+    def hunger
       
-       hunger_status = self.hunger
+       hunger_status = self.appetite
      if hunger_status < 0 
         "I'm too full for candy!"
      elsif hunger_status < 25 && hunger_status > 0
