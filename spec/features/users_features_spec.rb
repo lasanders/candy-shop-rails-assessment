@@ -157,8 +157,8 @@ describe 'Feature Test: Purchase Candy', :type => :feature do
     @peanut_butter_cups = Candy.create(
       :name => "Peanut Butter Cups",
       :taste => "sweet",
-      :cost => 102,
-      :appetite => 102,
+      :cost => 98,
+      :appetite => 98,
     )
     visit '/users/new'
     user_signup
