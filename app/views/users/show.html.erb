@@ -1,0 +1,19 @@
+<h2><%="Hi" @user.name %></h2>
+
+<% if @message %>
+    <p><%= @message %></p>
+<% end %>
+  
+    <p>Tickets: <%= @user.taste %></p>
+    <p>Mood: <%= @user.cash %></p>
+    <p>Height: <%= @user.appetite %></p>
+    <p>Admin: <%= @user.employee %></p>
+   <%= link_to 'See candies', attractions_path %> 
+    <%= link_to 'Log Out', signout_path%>
+    
+    <% if current_user.employee %>
+    
+ 
+<%= link_to 'Edit', edit_user_path(@user) %>
+
+<% end %>

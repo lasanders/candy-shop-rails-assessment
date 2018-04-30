@@ -1,0 +1,14 @@
+    <% @candies.each do |candy| %>
+        <% if current_user.employee %>
+          <li><%= link_to "#{candy.name} Details", candy_path(candy) %></li><br>
+        <% else %>
+          <%= link_to "Buy #{candy.name}", candy_path(candy) %><br>
+        <% end %>
+    <% end %>
+
+<% if current_user.employee %>
+
+  <%= link_to 'New Candy', new_candy_path %> 
+  
+
+  <% end %>
