@@ -5,6 +5,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :password_digest
       t.boolean :employee, default: false
       t.integer :cash
+      t.integer :appetite
 
       t.timestamps
     end

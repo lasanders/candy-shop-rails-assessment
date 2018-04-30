@@ -4,7 +4,7 @@ class CreateCandies < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :taste
       t.integer :cost
-
+      t.integer :appetite
       t.timestamps
     end
   end
