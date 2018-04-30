@@ -3,48 +3,52 @@ require 'rails_helper'
 RSpec.describe User, :type => :model do
   let(:user) {
     User.create(
-      :name => "Mindy",
+      :name => "claire",
       :password => "password",
-      :nausea => 5,
-      :happiness => 3,
-      :tickets => 4,
-      :height => 34
+      :taste => "sweet",
+      :cash => 32,
+      :appetite => 25,
+      :employee => false
     )
   }
 
-  let(:admin) {
+  let(:employee) {
     User.create(
-      :name => "Walt",
+      :name => "joe",
       :password => "password",
-      :nausea => 5,
-      :happiness => 3,
-      :tickets => 4,
-      :height => 34,
-      :admin => true
+      :taste => "sour",
+      :cash => 65,
+      :appetite => 50,
+      :employee => true
     )
   }
 
-  let(:roller_coaster) {
+  let(:sour_skittles) {
+    Candy.create(
+      :name => "Sour Skittles",
+      :taste => "sour",
+      :cost => 25,
+      :appetite => 25
+    )
+  }
+
+  let(:starburst) {
     Attraction.create(
-      :name => "Roller Coaster",
-      :tickets => 5,
-      :nausea_rating => 2,
-      :happiness_rating => 4,
-      :min_height => 32
-    )
+      :name => "Starburst",
+      :taste => "sweet",
+      :cost => 50,
+      :appetite => 50,
+      )
   }
-
-  let(:ferris_wheel) {
+  let(:peanut_butter_cups) {
     Attraction.create(
-      :name => "Ferris Wheel",
-      :tickets => 2,
-      :nausea_rating => 2,
-      :happiness_rating => 1,
-      :min_height => 28
+      :name => "Peanut Butter Cups",
+      :taste => "sweet",
+      :cost => 98,
+      :appetite => 98,
     )
   }
-
-  it "is valid with a name, password, happiness, nausea, height, and tickets" do
+  it "is valid with a name, password, taste, cost, and appetite" do
     expect(user).to be_valid
   end
 
@@ -52,34 +56,33 @@ RSpec.describe User, :type => :model do
     expect(User.new(name: "Name")).not_to be_valid
   end
 
-  it "is valid with an admin boolean" do
-    expect(admin).to be_valid
+  it "is valid with an employee boolean" do
+    expect(employee).to be_valid
   end
 
-  it "defaults to admin => false" do
-    expect(user.admin).to eq(false)
+  it "defaults to employee => false" do
+    expect(user.employee).to eq(false)
   end
 
-  it "has many rides" do
-    first_ride = Ride.create(:user_id => user.id, :attraction_id => roller_coaster.id)
-    second_ride = Ride.create(:user_id => user.id, :attraction_id => ferris_wheel.id)
-    expect(user.rides.first).to eq(first_ride)
-    expect(user.rides.last).to eq(second_ride)
+  it "has many purchases" do
+    first_purchase = Purchase.create(:user_id => user.id, :candy_id => sour_skittles.id)
+    second_purchase = Purchase.create(:user_id => user.id, :candy_id => starburst.id)
+    expect(user.purchases.first).to eq(first_purchase)
+    expect(user.purchases.last).to eq(second_purchase)
   end
 
-  it "has many attractions through rides" do
-    user.attractions << [roller_coaster, ferris_wheel]
-    expect(user.attractions.first).to eq(roller_coaster)
-    expect(user.attractions.last).to eq(ferris_wheel)
+  it "has many candies through purchases" do
+    user.candies << [sour_skittles, starburst, peanut_butter_cups]
+    expect(user.candies.first).to eq(sour_skittles)
+    expect(user.candies.last).to eq(peanut_butter_cups)
   end
 
-  it "has a method 'mood' that returns 'sad' when the user is more nauseous than happy" do
-    expect(user.mood).to eq("sad")
+  it "has a method 'hunger' that returns 'I'm too full for candy!' when the user's hunger is between 0-25" do
+    expect(user.mood).to eq("I'm too full for candy!")
   end
 
-  it "has a method 'mood' that returns 'happy' when the user is more happy than nauseous" do
-    user.update(:happiness => 7)
-    expect(user.mood).to eq("happy")
+  it "has a method 'hunger' that returns 'Maybe just a few more pieces!' when the user's hunger is between 25-50" do
+    expect(user.mood).to eq("Maybe just a few more pieces!")
   end
 
 end
