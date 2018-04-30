@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
     def appetite
       
-       hunger_status = self.appetite
+       hunger_status = self.hunger
      if hunger_status < 0
         "I'm too full for candy!"
      elsif hunger_status < 50
