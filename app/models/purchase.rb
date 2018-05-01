@@ -13,21 +13,21 @@ class Purchase < ApplicationRecord
     end
       
     def hunger_issue
-     self.user.appetite >= 75 || self.candy.appetite + self.user.appetite >= 75
+     self.user.appetite >= 75 
     
     end
     def hunger_problem
          "Sorry. You are not hungry enough to eat this #{self.candy.name}." 
     end
     def multiple_issues
-         self.candy.appetite >= self.user.appetite && self.candy.cost >= self.user.cash
+         self.candy.appetite <= 75 && self.candy.cost >= self.user.cash
     end
     def multiple_problems
         "Sorry. You do not have enough money to buy #{self.candy.name}. Sorry. You are not hungry enough to eat this #{self.candy.name}."
     end
 
     def get_cavities
-        self.candy.appetite <= self.user.appetite && self.candy.cost <= self.user.cash
+        self.user.appetite <= 75 && self.candy.cost <= self.user.cash
     end
     
     def thank_you
@@ -35,8 +35,8 @@ class Purchase < ApplicationRecord
     end
     
     def hunger
-      
-       hunger_status = @user.appetite
+     
+       hunger_status = user.appetite
      if hunger_status >= 0 && hunger_status <= 25
          "FEED ME CANDY, STAT"
      elsif hunger_status >= 25 && hunger_status <= 50
@@ -64,13 +64,15 @@ class Purchase < ApplicationRecord
     def purchase_candy
     if get_cavities
         update_qualities
-        thank_you
+        thank_you && hunger
      elsif cash_issue && hunger_issue
          multiple_problems && hunger
-    #  elsif cash_issue 
-    #   cash_problem
-    # elsif hunger_issue && !cash_issue  
-    #   hunger_problem
+     elsif cash_issue 
+      cash_problem && hunger
+      hunger
+    elsif hunger_issue  
+      hunger_problem 
+      hunger
     end
     end
     
