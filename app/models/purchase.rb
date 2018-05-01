@@ -38,13 +38,13 @@ class Purchase < ApplicationRecord
      
        hunger_status = user.appetite
      if hunger_status >= 0 && hunger_status <= 25
-         "FEED ME CANDY, STAT"
+         "WE NEED TO FEED YOU CANDY, STAT"
      elsif hunger_status >= 25 && hunger_status <= 50
-      "I need more candy to function!"
+      "You need more candy to function!"
      elsif hunger_status >= 50 && hunger_status <= 75
      "Maybe just a few more pieces!"
      elsif hunger_status >= 75 
-     "I'm too full for candy!"
+     "You're way too full for candy!"
      end
     end
             
