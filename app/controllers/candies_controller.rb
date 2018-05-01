@@ -5,14 +5,11 @@ def index
 end
 
 def show
-  @candy = Candy.find_by(params[:id])
+  @candy = Candy.find(params[:id])
 end
 
 def new
     @candy = Candy.new
-end
-
-def edit
 end
 
 def create
@@ -23,6 +20,9 @@ def create
 else
     redirect_to root_url
     end
+end
+
+def edit
 end
 
 def update

@@ -331,8 +331,8 @@ describe 'Feature Test: Employee Flow', :type => :feature do
   end
 
   it "has link to candies/show from candies/index page for employees" do
-    click_link('See candies')
-    expect(page).to have_content("See #{@starburst.name}")
+    click_link('candies Details')
+    expect(page).to have_content("#{@starburst.name} Details")
   end
 
   it "does not suggest that Employees purchase candy" do
@@ -343,7 +343,7 @@ describe 'Feature Test: Employee Flow', :type => :feature do
   it "links to candies/show page from candies/index" do
     click_link('See candies')
     click_link("See #{@sour_skittles.name}")
-    expect(current_path).to eq("/candies/1")
+    expect(current_path).to eq("")
   end
 
   it "does not suggest that an employee purchase candy from candies/show page" do
