@@ -62,17 +62,17 @@ class Purchase < ApplicationRecord
     
 
     def purchase_candy
+     
     if get_cavities
         update_qualities
-        thank_you && hunger
+        thank_you 
      elsif cash_issue && hunger_issue
-         multiple_problems && hunger
+         multiple_problems 
      elsif cash_issue 
-      cash_problem && hunger
-      hunger
+      cash_problem 
     elsif hunger_issue  
       hunger_problem 
-      hunger
+ 
     end
     end
     

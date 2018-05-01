@@ -12,6 +12,7 @@
  <%= link_to 'Log Out', signout_path%>
 <% else %>
 
+<%= link_to 'See candies', candies_path %> 
 <%= form_tag("/purchases", method: "post") do %>
  <%= hidden_field_tag :user_id, value = current_user.id %><br />
 <%= hidden_field_tag :candy_id, value = @candy.id %><br />
