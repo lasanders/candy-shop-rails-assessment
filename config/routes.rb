@@ -10,6 +10,8 @@ Rails.application.routes.draw do
    post '/sessions', to: 'sessions#create'
    get '/signout', to: 'sessions#destroy'
    delete '/signout', to: 'sessions#destroy'
+   get '/delete', to: 'candies#destroy'
+   delete '/delete', to: 'candies#destroy'
    # get '/rides', to: 'rides#new'
   post '/purchases', to: 'purchases#create'
  

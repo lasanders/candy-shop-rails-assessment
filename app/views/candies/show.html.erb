@@ -7,7 +7,9 @@
 
 
 <%= link_to 'Edit Candy', edit_candy_path(@candy) %>
-
+ <%= link_to 'See candies', candies_path %> 
+ <%= link_to 'Delete candy', delete_path %>
+ <%= link_to 'Log Out', signout_path%>
 <% else %>
 
 <%= form_tag("/purchases", method: "post") do %>

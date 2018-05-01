@@ -9,6 +9,7 @@ def show
   @candy = Candy.find(params[:id])
 end
 
+
 def new
     @candy = Candy.new
 end
@@ -17,17 +18,21 @@ def create
     @candy = Candy.new(candy_params)
     if current_user.employee
         @candy.save
-    redirect_to candy_path(@candy)
+    redirect_to @candy
 else
     redirect_to root_url
     end
 end
 
 def edit
+    @candy = Candy.find(params[:id])
 end
 
 def update
-    if @candy.update(candy_params)
+    @candy = Candy.find(params[:id])
+    if current_user.employee 
+    @candy.update(candy_params)
+  
         redirect_to @candy
     else
         render :edit
@@ -36,7 +41,7 @@ end
 
 def destroy
         @candy.destroy
-    redirect_to root_url
+    redirect_to candies_path
 end
 
 private
