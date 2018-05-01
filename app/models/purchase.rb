@@ -13,7 +13,7 @@ class Purchase < ApplicationRecord
     end
       
     def hunger_issue
-     self.candy.appetite >= self.user.appetite
+     self.user.appetite >= 75 || self.candy.appetite + self.user.appetite >= 75
     
     end
     def hunger_problem
@@ -33,6 +33,20 @@ class Purchase < ApplicationRecord
     def thank_you
         "Thanks for purchasing #{self.candy.name}!"
     end
+    
+    def hunger
+      
+       hunger_status = @user.appetite
+     if hunger_status >= 0 && hunger_status <= 25
+         "FEED ME CANDY, STAT"
+     elsif hunger_status >= 25 && hunger_status <= 50
+      "I need more candy to function!"
+     elsif hunger_status >= 50 && hunger_status <= 75
+     "Maybe just a few more pieces!"
+     elsif hunger_status >= 75 
+     "I'm too full for candy!"
+     end
+    end
             
         
     def update_qualities
@@ -51,15 +65,19 @@ class Purchase < ApplicationRecord
     if get_cavities
         update_qualities
         thank_you
-    elsif cash_issue && !hunger_issue
-       cash_problem
-    elsif hunger_issue && !cash_issue  
-       hunger_problem
-    elsif cash_issue && hunger_issue
-        multiple_problems
+     elsif cash_issue && hunger_issue
+         multiple_problems && hunger
+    #  elsif cash_issue 
+    #   cash_problem
+    # elsif hunger_issue && !cash_issue  
+    #   hunger_problem
     end
- 
-#   binding.pry
+    end
+    
+    def candy_dollars
+        # @candy = Candy.find_by([:id])
+        # @purchase = Purchase.create(:user_id => params[:user_id], :candy_id => params[:candy_id])
+        total_cash = []
+        total_cash << self.user.cash
     end
 end
-
