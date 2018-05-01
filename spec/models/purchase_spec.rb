@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Ride, :type => :model do
+RSpec.describe Candy, :type => :model do
   let(:candy) {
     Candy.create(
       :name => "Sour Skittles",

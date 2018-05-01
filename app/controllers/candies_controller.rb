@@ -1,5 +1,5 @@
 class CandiesController < ApplicationController
-     before_action :candy, only: [:show, :edit, :update, :destroy]
+     before_action :set_candy, only: [:show, :edit, :update, :destroy]
 def index
     @candies = Candy.all
 end
@@ -16,7 +16,7 @@ def create
     @candy = Candy.new(candy_params)
     if current_user.employee
         @candy.save
-    redirect_to candies_path(@candy)
+    redirect_to candy_path(@candy)
 else
     redirect_to root_url
     end
