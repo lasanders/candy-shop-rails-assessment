@@ -5,7 +5,7 @@ def index
 end
 
 def show
-  @candy = Candy.find(params[:id])
+  @candy = Candy.find_by(params[:id])
 end
 
 def new
@@ -19,7 +19,7 @@ def create
     @candy = Candy.new(candy_params)
     if current_user.employee
         @candy.save
-    redirect_to @candy
+    redirect_to candies_path(@candy)
 else
     redirect_to root_url
     end
