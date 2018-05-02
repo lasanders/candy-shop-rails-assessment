@@ -19,6 +19,7 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
         #  binding.pry
         redirect_to user_path(@user)
       else
+        @message = "Oops, you've missed a field, all fields are required."
         render :new 
      end
     end

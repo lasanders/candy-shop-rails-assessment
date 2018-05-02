@@ -1,21 +1,25 @@
 <%= form_for @user do |f| %>
-  
+
+<% if @message %>
+    <p><%= @message %></p>
+<% end %>
+
 <%= f.label :name %><br>
 <%= f.text_field :name %><br>
 
 <%= f.label :password %><br>
 <%= f.text_field :password %><br>
 
-<%= f.label :taste %><br>
+<%= f.label :taste %>: What are you in the mood for, sweet or sour?<br>
 <%= f.text_field :taste %><br>
 
-<%= f.label :cash %><br>
+<%= f.label :cash %>: How much cash do you have to spend?<br>
 <%= f.text_field :cash %><br>
 
-<%= f.label :appetite %><br>
+<%= f.label :appetite %>: Please enter a number from 1-50.<br>
 <%= f.text_field :appetite %><br>
 
-<%= f.label :employee %><br>
+<%= f.label :employee %>: Are you an Employee?<br>
 <%= f.text_field :employee %><br>
 
 
