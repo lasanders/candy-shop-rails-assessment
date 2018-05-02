@@ -52,11 +52,15 @@ class Purchase < ApplicationRecord
     new_appetite = self.user.appetite + self.candy.appetite
     new_taste = self.candy.taste
     new_cash =  self.user.cash - self.candy.cost
+    new_count = self.candy.count - 1
     self.user.update(
       :appetite => new_appetite,
       :taste => new_taste,
       :cash => new_cash
     )
+    self.candy.update(
+     :count => new_count
+        )
     end
     
 

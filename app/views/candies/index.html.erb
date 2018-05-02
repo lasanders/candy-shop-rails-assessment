@@ -5,7 +5,7 @@
         <% if current_user.employee %>
           <li><%= link_to "#{candy.name} Details", candy_path(candy) %> <%= candy.count %> <%= " #{candy.name} available for purchase" %></li><br>
         <% else %>
-          <%= link_to "Purchase #{candy.name}", candy_path(candy) %><br>
+          <li><%= link_to "Purchase #{candy.name}", candy_path(candy) %> <%= candy.count %> <%= " #{candy.name} available for purchase" %></li><br>
         <% end %>
     <% end %>
 <% end %>
@@ -16,7 +16,7 @@
         <% if current_user.employee %>
             <li><%= link_to "#{candy.name} Details", candy_path(candy) %> <%= candy.count %> <%= " #{candy.name} available for purchase" %></li><br>
         <% else %>
-          <%= link_to "Purchase #{candy.name}", candy_path(candy) %><br>
+          <li><%= link_to "Purchase #{candy.name}", candy_path(candy) %> <%= candy.count %> <%= " #{candy.name} available for purchase" %></li><br>
         <% end %>
     <% end %>
 <% end %>
