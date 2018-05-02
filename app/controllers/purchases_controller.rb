@@ -8,8 +8,7 @@ class PurchasesController < ApplicationController
   def create
      @purchase = Purchase.create(:user_id => params[:user_id], :candy_id => params[:candy_id])
      @message = @purchase.purchase_candy, @purchase.hunger
-    
-    #   @message_1 = @purchase.candy_dollars
+   
     redirect_to user_path(@purchase.user, :message => @message)
   end
   

@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2018_04_27_235124) do
     t.integer "appetite"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "count"
   end
 
   create_table "purchases", force: :cascade do |t|

@@ -40,6 +40,7 @@ def update
 end
 
 def destroy
+    @candy = Candy.find(params[:id])
         @candy.destroy
     redirect_to candies_path
 end

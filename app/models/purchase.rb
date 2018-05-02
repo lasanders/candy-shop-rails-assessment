@@ -74,9 +74,7 @@ class Purchase < ApplicationRecord
  
     end
     end
-    
-    def candy_dollars
-        total_cash = []
-        total_cash << self.user.cash
-    end
+  def count
+      self.candy.count
+     end
 end
