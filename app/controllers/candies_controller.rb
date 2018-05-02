@@ -32,7 +32,7 @@ def update
     @candy = Candy.find(params[:id])
     if current_user.employee 
     @candy.update(candy_params)
-  
+    @candy.save
         redirect_to @candy
     else
         render :edit
