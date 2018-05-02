@@ -53,7 +53,7 @@ def set_candy
 end
 
 def candy_params
-params.require(:candy).permit(:name, :taste, :cost, :appetite)
+params.require(:candy).permit(:name, :taste, :cost, :appetite, :count)
 end
 
 end
