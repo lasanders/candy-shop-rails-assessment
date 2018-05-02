@@ -23,7 +23,7 @@ class Purchase < ApplicationRecord
          self.candy.appetite <= 75 && self.candy.cost >= self.user.cash
     end
     def multiple_problems
-        "Sorry. You do not have enough money to buy #{self.candy.name}. Sorry. You are not hungry enough to eat this #{self.candy.name}."
+        "Sorry. You do not have enough money to buy #{self.candy.name}. Plus, you aren't hungry enough to eat #{self.candy.name}."
     end
 
     def get_cavities
@@ -44,7 +44,7 @@ class Purchase < ApplicationRecord
      elsif hunger_status >= 50 && hunger_status <= 75
      "Maybe just a few more pieces!"
      elsif hunger_status >= 75 
-     "You're way too full for candy!"
+     "In fact, you're way too full for candy!"
      end
     end
             
