@@ -1,8 +1,10 @@
 class PurchasesController < ApplicationController
     before_action :current_user
+    # validates :@user.appetite >=75
     
   def new
    @purchase = Purchase.new
+   @user.purchases = @user.purchase.all
   end
   
   def create
