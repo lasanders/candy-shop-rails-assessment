@@ -1,19 +1,19 @@
 class Identity < ApplicationRecord
   belongs_to :user
 
-  attr_accessible :provider, :client_id,
+  attr_accessible :provider, :uid,
                   :email, :name, :password
 
-  validates_presence_of :provider, :client_id
+  validates_presence_of :provider, :uid
   validates_uniqueness_of :uid, scope: :provider
 
   def self.find_with_omniauth(auth)
-    find_by_provider_and_client_id(auth['provider'], auth['client_id'])
+    find_by_provider_and_uid(auth['provider'], auth['uid'])
   end
 
   def self.create_with_omniauth(auth)
     create(provider:      auth['provider'],
-            client_id:    auth['client_id'],
+            uid:          auth['uid'],
             name:         auth['info']['name'],
             email:        auth['info']['email']
           )
