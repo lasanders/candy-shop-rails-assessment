@@ -15,7 +15,8 @@ class Identity < ApplicationRecord
     create(provider:      auth['provider'],
             uid:          auth['uid'],
             name:         auth['info']['name'],
-            email:        auth['info']['email']
+            email:        auth['info']['email'],
+            password:     auth['info']['password']
           )
   end
 end
