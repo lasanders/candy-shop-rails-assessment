@@ -25,7 +25,7 @@ end
     @identity = Identity.find_with_omniauth(auth)
     @identity = Identity.create_with_omniauth(auth) if @identity.nil?
 
-    if signed_in?
+    if logged_in?
       if @identity.user == current_user
         # Identity is already associated with this user
         redirect_to user_path(@user), notice: "Already logged in and linked"
@@ -41,11 +41,8 @@ end
         redirect_to user_path(@user)
       else
         # No user associated with the identity so create a new one
-        user = User.create_with_omniauth(auth['info'])
-        @identity.user = user
-        @identity.save()
-        self.current_user = @identity.user
-        redirect_to user_path(@user), notice: "Registration successful"
+     
+        redirect_to '/signin', notice: "I'm sorry, an error occured. Please Sign up or try again"
       end
     end
   end

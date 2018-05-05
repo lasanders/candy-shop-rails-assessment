@@ -1,7 +1,7 @@
 class Identity < ApplicationRecord
   belongs_to :user
 
-  attr_accessible :provider, :uid,
+  attr_accessor :provider, :uid,
                   :email, :name, :password
 
   validates_presence_of :provider, :uid
