@@ -30,7 +30,7 @@ end
         # Identity is already associated with this user
         redirect_to user_path(@user), notice: "Already logged in and linked"
       else
-       @identity.user = current_user
+      @identity.user = current_user
         @identity.save()
         redirect_to user_path(@user), notice: "Account was successfully linked"
       end
@@ -41,8 +41,11 @@ end
         redirect_to user_path(@user)
       else
         # No user associated with the identity so create a new one
-     
-        redirect_to '/signin', notice: "I'm sorry, an error occured. Please Sign up or try again"
+        user = User.create_with_omniauth(auth['info'])
+        @identity.user = user
+        @identity.save()
+        self.current_user = @identity.user
+        redirect_to user_path(@user), notice: "Registration successful"
       end
     end
   end

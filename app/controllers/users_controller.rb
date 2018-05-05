@@ -17,9 +17,8 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
     
      if @user.save 
         session[:user_id] = @user.id
-        #  binding.pry
         redirect_to user_path(@user)
-      else
+    else
         @message = "Oops, you've missed a field, all fields are required."
         render :new 
      end
@@ -43,7 +42,7 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
     end
     
     def user_params
-        params.require(:user).permit(:name, :password, :taste, :cash, :appetite, :employee)
+        params.require(:user).permit(:name, :password, :email, :taste, :cash, :appetite, :employee)
     end
 
 end
