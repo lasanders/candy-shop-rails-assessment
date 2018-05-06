@@ -19,7 +19,7 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
         session[:user_id] = @user.id
         redirect_to user_path(@user)
     else
-        @message = "Oops, you've missed a field, all fields are required."
+        user_error
         render :new 
      end
     end
@@ -35,6 +35,14 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
       end
     end
  
+ def user_error
+     if @user.errors.any?
+        # pluralize(@user.errors.count, "error") 
+     @user.errors.full_messages.each do |msg|
+         @error = msg
+     end
+ end
+ end
     
     private
     def set_user
