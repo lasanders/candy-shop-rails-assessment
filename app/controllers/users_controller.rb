@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 before_action :set_user, only: [:show, :edit, :update, :destroy]
+helper_method :get_cavities
 
     def show
         @user = User.find(params[:id])

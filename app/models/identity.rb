@@ -14,9 +14,9 @@ class Identity < ApplicationRecord
   def self.create_with_omniauth(auth)
     create(provider:      auth['provider'],
             uid:          auth['uid'],
-            name:         auth['info']['name'],
-            email:        auth['info']['email'],
-            password:     auth['info']['password']
+            name:         auth['name'],
+            email:        auth['email'],
+            # password:     auth['info']['password']
           )
   end
 end

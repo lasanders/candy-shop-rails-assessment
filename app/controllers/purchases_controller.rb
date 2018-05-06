@@ -1,6 +1,7 @@
 class PurchasesController < ApplicationController
     before_action :current_user
-    # validates :@user.appetite >=75
+    helper_method :get_cavities
+
     
   def new
    @purchase = Purchase.new

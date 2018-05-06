@@ -41,11 +41,12 @@ end
         redirect_to user_path(@user)
       else
         # No user associated with the identity so create a new one
-        user = User.create_with_omniauth(auth['info'])
-        @identity.user = user
+        user = User.create_with_omniauth(auth)
+        @identity.user =user
         @identity.save()
         self.current_user = @identity.user
-        redirect_to '/users/new', notice: "I'm sorry. Something went wrong. Please create an account"
+         redirect_to user_path(@user)
+        # redirect_to '/users/new', notice: "I'm sorry. Something went wrong. Please create an account"
       end
     end
   end

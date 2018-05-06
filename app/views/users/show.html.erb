@@ -10,8 +10,10 @@
     <p>Employee: <%= @user.employee %></p>
     
     <h2>You have purchased the following candies:</h2>
+          
       <% @user.candies.each do |candy| %>
       <li><%= candy.name %></li> 
+   
       <% end %>
    <%= link_to 'See candies', candies_path %> 
     <%= link_to 'Log Out', signout_path%>
