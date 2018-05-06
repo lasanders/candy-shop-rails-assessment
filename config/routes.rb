@@ -8,8 +8,8 @@ Rails.application.routes.draw do
    
    get '/signin', to: 'sessions#new', as: 'signin'
    post '/sessions', to: 'sessions#create'
-   get '/auth/google_oauth2/callback', to: 'sessions#other_create'
-   post '/auth/google_oauth2/callback', to: 'sessions#other_create'
+   get '/auth/google_oauth2/callback', to: 'sessions#create'
+   post '/auth/google_oauth2/callback', to: 'sessions#create'
    get '/signout', to: 'sessions#destroy'
    delete '/signout', to: 'sessions#destroy'
    get '/delete', to: 'candies#destroy'
