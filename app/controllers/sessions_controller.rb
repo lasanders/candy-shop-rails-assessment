@@ -23,7 +23,7 @@ end
     origin = request.env['omniauth.origin']
     destination = origin.blank? ? root_path : origin
     @identity = Identity.find_with_omniauth(auth)
-    @identity = Identity.create_with_omniauth(auth) if @identity.nil?
+    @identity = Identity.create if @identity.nil?
 
     if logged_in?
       if @identity.user == current_user
@@ -34,14 +34,15 @@ end
         @identity.save()
         redirect_to user_path(@user), notice: "Account was successfully linked"
       end
-    else
-      if @identity.user.present?
-        # Identity has a user associated with it
-        self.current_user = @identity.user
-        redirect_to user_path(@user)
+    # else
+    #   if @identity.user.present?
+    #     # Identity has a user associated with it
+    #     self.current_user = @identity.user
+    #     redirect_to user_path(@user)
       else
         # No user associated with the identity so create a new one
-        user = User.create_with_omniauth(auth)
+        user = User.new
+        @identity = Identity.new
         @identity.user =user
         @identity.save()
         self.current_user = @identity.user
@@ -49,7 +50,7 @@ end
         # redirect_to '/users/new', notice: "I'm sorry. Something went wrong. Please create an account"
       end
     end
-  end
+#   end
 
   def other_destroy
     self.current_user = nil
