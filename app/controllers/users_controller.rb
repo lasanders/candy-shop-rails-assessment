@@ -35,6 +35,15 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
         render :edit 
       end
     end
+    
+     def user_error
+     if @user.errors.any?
+        # pluralize(@user.errors.count, "error") 
+     @user.errors.full_messages.each do |msg|
+         @error = msg
+     end
+ end
+ end
  
     
     private
