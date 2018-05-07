@@ -16,9 +16,6 @@ def create
       redirect_to '/signin'
        
 end
-
-def omniauth_create
-    
 end
 
 def destroy
