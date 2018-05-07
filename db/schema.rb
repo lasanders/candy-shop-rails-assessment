@@ -17,9 +17,9 @@ ActiveRecord::Schema.define(version: 2018_04_27_235124) do
     t.string "taste"
     t.integer "cost"
     t.integer "appetite"
+    t.integer "count"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "count"
   end
 
   create_table "purchases", force: :cascade do |t|
@@ -32,12 +32,12 @@ ActiveRecord::Schema.define(version: 2018_04_27_235124) do
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.string "password_digest"
+    t.string "taste"
     t.boolean "employee", default: false
     t.integer "cash"
     t.integer "appetite"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "taste"
   end
 
 end
