@@ -19,20 +19,13 @@ end
 end
 
  def other_create
-  @user = User.find_or_create_by(uid: auth['uid']) do |u|
-       
+    @user = User.find_or_create_by(uid: auth['uid']) do |u|
       u.name = auth['info']['name']
-      u.provider = "google_oauth2"
       u.email = auth['info']['email']
-      u.taste ="sweet"
-      u.appetite = 1
-      u.cash = 10
-      u.id = session[:user_id]
-#   binding.pry
-end
+    end
+
     session[:user_id] = @user.id
       redirect_to user_path(@user)
-
   end
 
 def destroy

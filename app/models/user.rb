@@ -4,4 +4,11 @@ class User < ActiveRecord::Base
     has_many :candies, through: :purchases
     validates_presence_of :taste, :cash, :appetite
     validates :cash, :appetite, numericality: { only_integer: true }
+    
+      def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      user.email = auth.info.email
+    end
+  end
+end
 end
