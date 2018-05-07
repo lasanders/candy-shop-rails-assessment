@@ -1,7 +1,7 @@
 <%= form_for @user do |f| %>
 
-<% if @message %>
-    <p><%= @message %></p>
+<% if @user.errors.any? %>
+    <p><%= @error %></p>
 <% end %>
 
 <%= f.label :name %><br>
