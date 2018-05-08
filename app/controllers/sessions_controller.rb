@@ -23,6 +23,7 @@ end
        
       u.name = auth['info']['name']
       u.email = auth['info']['email']
+      u.uid = auth['uid']
       u.taste ="sweet"
       u.appetite = 1
       u.cash = 10
