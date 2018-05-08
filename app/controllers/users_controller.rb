@@ -21,7 +21,6 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
         redirect_to user_path(@user)
       else
         user_error
-        # @message = "Oops, you've missed a field, all fields are required."
         render :new 
      end
     end
@@ -43,8 +42,8 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
      @user.errors.full_messages.each do |msg|
          @error = msg
      end
- end
- end
+     end
+    end
     
     private
     def set_user
