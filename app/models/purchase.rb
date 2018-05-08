@@ -43,7 +43,7 @@ class Purchase < ApplicationRecord
      elsif hunger_status >= 50 && hunger_status <= 75
         "Maybe just a few more pieces!"
      elsif hunger_status >= 75 
-        "In fact, you're way too full for candy!"
+        "You are way too full for candy right now!"
      end
     end
             

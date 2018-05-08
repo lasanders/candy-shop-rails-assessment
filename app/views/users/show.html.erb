@@ -14,11 +14,11 @@
       <li><%= candy.name %></li> 
       <% end %>
    <%= link_to 'See candies', candies_path %> 
+   <%= link_to 'Edit User', edit_user_path(@user) %>
     <%= link_to 'Log Out', signout_path%>
     
-    <% if current_user.employee %>
+
     
  
-<%= link_to 'Edit', edit_user_path(@user) %>
 
-<% end %>
+
