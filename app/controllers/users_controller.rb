@@ -32,6 +32,7 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
       if @user.update(user_params)
         redirect_to @user
       else
+          user_error
         render :edit 
       end
     end

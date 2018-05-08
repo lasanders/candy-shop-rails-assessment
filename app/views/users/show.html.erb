@@ -1,21 +1,21 @@
 <h2>Hi <%= @user.name %>!</h2>
 
 <% if @message %>
-    <p><%= @message %></p>
+<p><%= @message %></p>
 <% end %>
 
-    <p>Taste: <%= @user.taste %></p>
-    <p>Cash: <%= @user.cash %></p>
-    <p>Appetite: <%= @user.appetite %></p>
-    <p>Employee: <%= @user.employee %></p>
+<p>Taste: <%= @user.taste %></p>
+<p>Cash: <%= @user.cash %></p>
+<p>Appetite: <%= @user.appetite %></p>
+<p>Employee: <%= @user.employee %></p>
     
-    <h2>You have purchased the following candies:</h2>
+<h2>You have purchased or viewed the following candies:</h2>
       <% @user.candies.each do |candy| %>
-      <li><%= candy.name %></li> 
+<li><%= candy.name %></li> 
       <% end %>
-   <%= link_to 'See candies', candies_path %> 
-   <%= link_to 'Edit User', edit_user_path(@user) %>
-    <%= link_to 'Log Out', signout_path%>
+<%= link_to 'See candies', candies_path %> 
+<%= link_to 'Edit User', edit_user_path(@user) %>
+<%= link_to 'Log Out', signout_path%>
     
 
     
