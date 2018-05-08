@@ -51,6 +51,7 @@ group :development do
   gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'thin'
+gem 'dotenv'
 gem 'dotenv-rails'
 end
 
