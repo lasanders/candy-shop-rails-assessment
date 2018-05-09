@@ -1,0 +1,9 @@
+<% @user.all.each do |user| %>
+<% user.candies.each do |candy| %>
+<H1><%= user.name %><%= candy.name %>Cost: <%= candy.cost %>Taste: <%= candy.taste %> candy</p></H1>
+
+   <p>Cost: <%= candy.cost %></p><br>
+    <p>Taste: <%= candy.taste %> candy</p><br>
+    <p>Appetite: <%= candy.appetite %></p><br>
+    <p>Count: <%= candy.count %></p><br>
+    find by candy name - sort by users who purchased candy
