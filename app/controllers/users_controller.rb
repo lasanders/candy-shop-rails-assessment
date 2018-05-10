@@ -10,9 +10,7 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
 def candies
     @user = User.find(params[:id])
     @purchases = Purchase.all
-    # @user.purchases = purchases.find(params[:user_ids])
-    # user_purchases = @purchases.find_by(:user_ids)
-    # @user.candies = @user.purchases.find(params[:candy_ids])
+    @candy = Candy.find(params[:id])
 end 
     def new
         @user = User.new

@@ -1,6 +1,11 @@
+<H1>Hi <%= @user.name %>! You have purchased the following candies:</H1>
+
 
 <% @user.purchases.each do |purchase| %>
-<H1><%= purchase.candy.name %></H1>
 
-   
+<h2><li><%= purchase.candy.name %></li></h2>
+<%= purchase.candy.cost %><br>
+<%= purchase.candy.taste %><br>
+<%= purchase.candy.appetite %><br>
+
 <% end %>
