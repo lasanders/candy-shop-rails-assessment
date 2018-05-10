@@ -1,8 +1,7 @@
 class Purchase < ApplicationRecord
     belongs_to:user
     belongs_to:candy
-    #  scope :count, -> {where(candy.count)}   
-
+    #  scope :count, -> {where(candy.count)} 
 
     def cash_issue
     self.candy.cost >= self.user.cash

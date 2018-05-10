@@ -3,8 +3,9 @@ class PurchasesController < ApplicationController
     # validates :@user.appetite >=75
     
   def new
+      @user = User.find(params[:id])
    @purchase = Purchase.new
-   @user.purchases = @user.purchase.all
+  
   end
   
   def create
@@ -16,7 +17,7 @@ class PurchasesController < ApplicationController
 private
 
 def purchase_params
-params.require(:purchase).permit(:user_id, :purchase_id)
+params.require(:purchase).permit(:user_id, :candy_id)
 end
 end
 

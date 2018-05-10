@@ -7,7 +7,13 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
         @message = params[:message]
     end
 
-
+def candies
+    @user = User.find(params[:id])
+    @purchases = Purchase.all
+    # @user.purchases = purchases.find(params[:user_ids])
+    # user_purchases = @purchases.find_by(:user_ids)
+    # @user.candies = @user.purchases.find(params[:candy_ids])
+end 
     def new
         @user = User.new
     end
@@ -52,8 +58,8 @@ before_action :set_user, only: [:show, :edit, :update, :destroy]
     end
     
     def user_params
-        params.require(:user).permit(:name, :password, :taste, :cash, :appetite, :employee)
-    end
+        params.require(:user).permit(:name, :password, :taste, :cash, :appetite, :employee, candy_ids: [], purchases_attributes: [:candy_id, :user_id])
 
+end
 end
         
