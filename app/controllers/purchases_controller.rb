@@ -9,10 +9,16 @@ class PurchasesController < ApplicationController
   end
   
   def create
-     @purchase = Purchase.create(:user_id => params[:user_id], :candy_id => params[:candy_id])
+      
+     @purchase = Purchase.new(:user_id => params[:user_id], :candy_id => params[:candy_id])
+    #  if @purchase.get_cavities
+    #          binding.pry
+    #      @purchase.save
      @message = @purchase.purchase_candy, @purchase.hunger
     redirect_to user_path(@purchase.user, :message => @message)
+
   end
+
   
 private
 
