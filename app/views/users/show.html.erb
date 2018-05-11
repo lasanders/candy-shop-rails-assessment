@@ -9,10 +9,7 @@
 <p>Appetite: <%= @user.appetite %></p>
 <p>Employee: <%= @user.employee %></p>
     
-<h2>You have purchased or viewed the following candies:</h2>
-      <% @user.candies.each do |candy| %>
-<li><%= candy.name %></li> 
-      <% end %>
+<br></br>
 <%= link_to 'User candies', user_candies_path %> 
 <%= link_to 'See candies', candies_path %> 
 <%= link_to 'Edit User', edit_user_path(@user) %>
