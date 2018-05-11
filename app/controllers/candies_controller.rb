@@ -18,13 +18,13 @@ end
 
 def create
     @candy = Candy.new(candy_params)
-    if current_user.employee
-        @candy.save
-    redirect_to @candy
-else
-    render :new
+    if current_user.employee && @candy.save 
+        redirect_to candy_path(@candy)
+      else
+        candy_error
+        render :new 
+     end
     end
-end
 
 def edit
     @candy = Candy.find(params[:id])
@@ -43,7 +43,6 @@ end
 
 def candy_error
      if @candy.errors.any?
-        # pluralize(@user.errors.count, "error") 
      @candy.errors.full_messages.each do |msg|
          @error = msg
      end
@@ -51,7 +50,8 @@ def candy_error
     end
 
 def destroy
-    @candy = Candy.find(params[:id])
+
+     @candy = Candy.last
         @candy.destroy
     redirect_to candies_path
 end

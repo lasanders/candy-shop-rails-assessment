@@ -17,7 +17,7 @@ Rails.application.routes.draw do
    get '/signout', to: 'sessions#other_destroy'
     delete '/signout', to: 'sessions#other_destroy'
    get '/delete', to: 'candies#destroy'
-   delete '/delete', to: 'candies#destroy'
+   post '/delete', to: 'candies#destroy'
    # get '/rides', to: 'rides#new'
   post '/purchases', to: 'purchases#create'
 
