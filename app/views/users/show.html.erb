@@ -13,7 +13,7 @@
       <% @user.candies.each do |candy| %>
 <li><%= candy.name %></li> 
       <% end %>
-<%= link_to 'User candies', '/users/candies' %> 
+<%= link_to 'User candies', user_candies_path %> 
 <%= link_to 'See candies', candies_path %> 
 <%= link_to 'Edit User', edit_user_path(@user) %>
 <%= link_to 'Log Out', signout_path%>

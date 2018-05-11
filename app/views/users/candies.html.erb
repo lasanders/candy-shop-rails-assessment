@@ -4,8 +4,12 @@
 <% @user.purchases.each do |purchase| %>
 
 <h2><li><%= purchase.candy.name %></li></h2>
-<%= purchase.candy.cost %><br>
-<%= purchase.candy.taste %><br>
-<%= purchase.candy.appetite %><br>
+Cost of candy: <%= purchase.candy.cost %> dollars<br>
+Candy flavor: <%= purchase.candy.taste %><br>
+Your Appetite Rating at the time of purchase: <%= purchase.candy.appetite %><br>
 
 <% end %>
+
+<%= link_to 'Log Out', signout_path%>
+<%= link_to 'See candies', candies_path %> 
+<%= link_to 'User Profile', user_path(@user) %> 

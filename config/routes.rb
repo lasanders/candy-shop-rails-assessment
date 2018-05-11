@@ -10,7 +10,7 @@ Rails.application.routes.draw do
    get '/auth/google_oauth2/callback' => 'sessions#other_create'
    post '/sessions', to: 'sessions#create'
    post '/auth/google_oauth2/callback' => 'sessions#other_create'
-    get '/users/:id/candies' => 'users#candies'
+    get '/users/:id/candies' => 'users#candies', as: 'user_candies'
     post '/users/:id/candies' => 'users#candies'
    get '/signout', to: 'sessions#destroy'
    delete '/signout', to: 'sessions#destroy'
