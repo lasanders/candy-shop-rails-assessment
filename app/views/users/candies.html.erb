@@ -1,7 +1,7 @@
 <H2>Hi <%= @user.name %>! You have purchased the following candies:</H2>
 
 
-<% @user.purchases.where("candy.name.uniq") %>
+<% @user.purchases.each do |purchase| %>
 
 <h3><li><%= purchase.candy.name %></li></h3>
 Cost of candy: <%= purchase.candy.cost %> dollars<br>

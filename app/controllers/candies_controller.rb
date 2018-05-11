@@ -7,6 +7,8 @@ end
 
 def show
   @candy = Candy.find(params[:id])
+  
+  @message = params[:message]
 end
 
 
@@ -20,7 +22,7 @@ def create
         @candy.save
     redirect_to @candy
 else
-    redirect_to root_url
+    render :new
     end
 end
 
@@ -39,11 +41,21 @@ def update
     end
 end
 
+def candy_error
+     if @candy.errors.any?
+        # pluralize(@user.errors.count, "error") 
+     @candy.errors.full_messages.each do |msg|
+         @error = msg
+     end
+     end
+    end
+
 def destroy
     @candy = Candy.find(params[:id])
         @candy.destroy
     redirect_to candies_path
 end
+
 
 private
 

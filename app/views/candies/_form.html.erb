@@ -1,4 +1,8 @@
 <%= form_for @candy do |f| %>
+
+<% if @candy.errors.any? %>
+    <p><%= @error %></p>
+<% end %>
   
 <%= f.label :name %><br>
 <%= f.text_field :name %><br>
