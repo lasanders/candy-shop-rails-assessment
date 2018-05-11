@@ -32,14 +32,13 @@ end
 
 def update
     @candy = Candy.find(params[:id])
-    if current_user.employee 
-    @candy.update(candy_params)
-    @candy.save
+    if current_user.employee  && @candy.update(candy_params)
         redirect_to @candy
-    else
-        render :edit
+      else
+          candy_error
+        render :edit 
+      end
     end
-end
 
 def candy_error
      if @candy.errors.any?
