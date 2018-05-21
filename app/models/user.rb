@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
     has_many :candies, through: :purchases
     validates_presence_of :taste, :cash, :appetite
     accepts_nested_attributes_for :candies
+    accepts_nested_attributes_for :purchases
     validates :cash, :appetite, numericality: { only_integer: true }
     validates :taste, inclusion: {in: %w(sweet sour), message: ": Please choose sweet or sour" }
     
@@ -24,5 +25,6 @@ class User < ActiveRecord::Base
       self.candy = Candy.find_or_create_by(name: candy.name)
       self.candy.update(candy)
   end
+  
 end
 

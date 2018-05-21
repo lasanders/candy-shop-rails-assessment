@@ -6,7 +6,6 @@ def index
 end
 
 def show
-@candy= Candy.find(params[:id])
   
 @message= params[:message]
 end
@@ -14,6 +13,7 @@ end
 
 def new
 @candy= Candy.new
+
 end
 
 def create

@@ -2,6 +2,7 @@ class Purchase < ApplicationRecord
     belongs_to:user
     belongs_to:candy
     
+    
 
     def cash_issue
     self.candy.cost >= self.user.cash

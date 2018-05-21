@@ -1,0 +1,22 @@
+<H1><%= @candy.name %></p></H1>
+   <p>Cost: <%= @candy.cost %></p><br>
+    <p>Taste: <%= @candy.taste %> candy</p><br>
+    <p>Appetite: <%= @candy.appetite %></p><br>
+    <p>Count: <%= @candy.count %></p><br>
+    
+<%= form_for @purchase do |f| %>   
+<%= f.payment_type :payment_type %><br>
+<%= f.text_field :payment_type %><br>
+
+ <%= f.submit %>
+<% end %>
+
+<%= link_to 'Log Out', signout_path%>
+<%= link_to 'See candies', candies_path %> 
+<%= form_tag("/purchases", method: "post") do %>
+ <%= hidden_field_tag :user_id, value = current_user.id %><br />
+<%= hidden_field_tag :candy_id, value = @candy.id %><br />
+<div class="actions"><%= submit_tag 'Purchase Candy', :class => 'btn btn-primary' %></div>
+
+<% end %>
+<% end %>

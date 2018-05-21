@@ -8,7 +8,7 @@ class PurchasesController < ApplicationController
   end
   
   def create
-       @purchase = Purchase.new(:user_id => params[:user_id], :candy_id => params[:candy_id])
+       @purchase = Purchase.new(:user_id => params[:user_id], :candy_id => params[:candy_id], :payment_type => params[:payment_type])
     if @purchase.get_cavities
      @purchase.save
     end
@@ -22,7 +22,7 @@ class PurchasesController < ApplicationController
 private
 
 def purchase_params
-params.require(:purchase).permit(:user_id, :candy_id)
+params.require(:purchase).permit(:user_id, :candy_id, :payment_type)
 end
 end
 

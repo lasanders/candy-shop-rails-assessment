@@ -10,7 +10,8 @@
 <p>Employee: <%= @user.employee %></p>
     
 <br></br>
-<%= link_to 'Create New Candy', new_candy_path %> 
+
+<%= link_to 'Purchase Candy', new_user_purchase_path %> 
 <%= link_to 'User candies', user_candies_path %> 
 <%= link_to 'See candies', candies_path %> 
 <%= link_to 'Edit User', edit_user_path(@user) %>
