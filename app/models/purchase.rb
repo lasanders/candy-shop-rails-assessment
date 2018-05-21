@@ -1,7 +1,9 @@
 class Purchase < ApplicationRecord
     belongs_to:user
     belongs_to:candy
+    # validates :appetite, :numericality => {greater_than_or_equal_to: 75}
     #  scope :count, -> {where(candy.count)} 
+    
 
     def cash_issue
     self.candy.cost >= self.user.cash

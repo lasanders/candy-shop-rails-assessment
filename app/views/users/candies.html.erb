@@ -1,14 +1,14 @@
 <H2>Hi <%= @user.name %>! You have purchased the following candies:</H2>
 
 
-<% @user.purchases.each do |purchase| %>
+<% @user.candies.uniq.each do |candy| %>
 
-<h3><li><%= purchase.candy.name %></li></h3>
-Cost of candy: <%= purchase.candy.cost %> dollars<br>
-Candy flavor: <%= purchase.candy.taste %><br>
-Candy appetite rating: <%= purchase.candy.appetite %><br>
-
+<h3><li><%= candy.name %></li></h3>
+Cost of candy: <%= candy.cost %> dollars<br>
+Candy flavor: <%= candy.taste %><br>
+Candy appetite rating: <%= candy.appetite %><br>
 <% end %>
+
 <br></br>
 <%= link_to 'Log Out', signout_path%>
 <%= link_to 'See candies', candies_path %> 
