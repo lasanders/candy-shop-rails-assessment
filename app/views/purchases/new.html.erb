@@ -1,22 +1,33 @@
-<H1><%= @candy.name %></p></H1>
-   <p>Cost: <%= @candy.cost %></p><br>
-    <p>Taste: <%= @candy.taste %> candy</p><br>
-    <p>Appetite: <%= @candy.appetite %></p><br>
-    <p>Count: <%= @candy.count %></p><br>
+    <h1>Candies</h1>
+    <h2>Sour Candies</h2>
+    <% Candy.sour.each do |candy| %>
+    <%= form_tag("/purchases", method: "post") do %>
+    <%= hidden_field_tag :user_id, value = current_user.id %><br>
+    <%= hidden_field_tag :candy_id, value = candy.id %>
+
+    <li><%= link_to "Purchase #{candy.name}", candy_path(candy) %> <%= candy.count %> <%= " #{candy.name} available for purchase" %> <%= submit_tag 'Purchase Candy', :class => 'btn btn-primary' %></li>
+    <% end %>
+ <% end %>
+
+    <h2>Sweet Candies</h2>
+    <% Candy.sweet.each do |candy| %>
+    <%= form_tag("/purchases", method: "post") do %>
+    <%= hidden_field_tag :user_id, value = current_user.id %><br>
+    <%= hidden_field_tag :candy_id, value = candy.id %>
+
+    <li><%= link_to "Purchase #{candy.name}", candy_path(candy) %> <%= candy.count %> <%= " #{candy.name} available for purchase" %> <%= submit_tag 'Purchase Candy', :class => 'btn btn-primary' %></li>
+    <% end %>
+ <% end %>
+   <br></br> 
     
 <%= form_for @purchase do |f| %>   
-<%= f.payment_type :payment_type %><br>
-<%= f.text_field :payment_type %><br>
+<%= f.label :payment_type %><br>
+<%= f.text_field :payment_type %> <%= f.submit %><br>
 
- <%= f.submit %>
+
 <% end %>
 
 <%= link_to 'Log Out', signout_path%>
 <%= link_to 'See candies', candies_path %> 
-<%= form_tag("/purchases", method: "post") do %>
- <%= hidden_field_tag :user_id, value = current_user.id %><br />
-<%= hidden_field_tag :candy_id, value = @candy.id %><br />
-<div class="actions"><%= submit_tag 'Purchase Candy', :class => 'btn btn-primary' %></div>
 
-<% end %>
-<% end %>
+

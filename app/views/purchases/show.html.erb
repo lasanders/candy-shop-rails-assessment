@@ -1,0 +1,16 @@
+<H2>Candy Stats:</H2>
+
+
+<% @candies.each do |candy| %>
+
+<h3><li><%= candy.user.name %></li></h3>
+Cost of candy: <%= candy.cost %> dollars<br>
+Candy flavor: <%= candy.taste %><br>
+Candy appetite rating: <%= candy.appetite %><br>
+<% end %>
+
+
+<br></br>
+<%= link_to 'Log Out', signout_path%>
+<%= link_to 'See candies', candies_path %> 
+<%= link_to 'User Profile', user_path(@user) %> 

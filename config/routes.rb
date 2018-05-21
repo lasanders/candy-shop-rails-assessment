@@ -23,10 +23,13 @@ Rails.application.routes.draw do
   post '/purchases', to: 'purchases#create'
 
      resources :users do
-       resources :purchases, only: [:new, :show]
+       resources :purchases, only: [:new]
      end
-      resources :candies
-  
+      resources :candies do
+          resources :purchases, only: [:show]
+  end
+    resources :candies
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
 
