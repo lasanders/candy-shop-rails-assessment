@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
     validates :taste, inclusion: {in: %w(sweet sour), message: ": Please choose sweet or sour" }
     
     scope :full, -> { where('appetite >= 75')}
+    scope :satisfied, -> { where('appetite >=50' && 'appetite < 75')}
+    scope :hungry, -> { where('appetite >=0' && 'appetite < 50')}
     
       def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap  do |user|

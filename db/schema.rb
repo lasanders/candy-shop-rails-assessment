@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2018_04_27_235124) do
     t.integer "candy_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "payment_type"
   end
 
   create_table "users", force: :cascade do |t|
