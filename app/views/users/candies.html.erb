@@ -9,6 +9,13 @@ Candy flavor: <%= candy.taste %><br>
 Candy appetite rating: <%= candy.appetite %><br>
 <% end %>
 
+<H2>The following users are full:</H2>   
+   
+ <% User.full.each do |user| %>
+ <li><%= user.name %></li>
+ <% end %>
+
+
 <br></br>
 <%= link_to 'Log Out', signout_path%>
 <%= link_to 'See candies', candies_path %> 

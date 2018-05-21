@@ -1,8 +1,6 @@
 class Purchase < ApplicationRecord
     belongs_to:user
     belongs_to:candy
-    # validates :appetite, :numericality => {greater_than_or_equal_to: 75}
-    #  scope :count, -> {where(candy.count)} 
     
 
     def cash_issue
@@ -75,7 +73,7 @@ class Purchase < ApplicationRecord
          multiple_problems 
     elsif cash_issue 
       cash_problem 
-    elsif hunger_issue  
+    elsif hunger_issue
       hunger_problem 
  
     end

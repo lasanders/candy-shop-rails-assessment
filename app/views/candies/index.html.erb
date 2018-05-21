@@ -17,11 +17,13 @@
           <li><%= link_to "Purchase #{candy.name}", candy_path(candy) %> <%= candy.count %> <%= " #{candy.name} available for purchase" %></li><br>
         <% end %>
     <% end %>
+   <br></br> 
 
 <% if current_user.employee %>
 
   <%= link_to 'New Candy', new_candy_path %> 
+    <% end %>
   <%= link_to 'Log Out', signout_path%>
   
 
-  <% end %>
+

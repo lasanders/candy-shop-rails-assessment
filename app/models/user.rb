@@ -7,6 +7,8 @@ class User < ActiveRecord::Base
     validates :cash, :appetite, numericality: { only_integer: true }
     validates :taste, inclusion: {in: %w(sweet sour), message: ": Please choose sweet or sour" }
     
+    scope :full, -> { where('appetite >= 75')}
+    
       def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_initialize.tap  do |user|
       user.email = auth.info.email
