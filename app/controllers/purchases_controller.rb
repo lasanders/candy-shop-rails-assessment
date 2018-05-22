@@ -2,7 +2,9 @@ class PurchasesController < ApplicationController
     before_action :current_user
     
        def show
-         @candy = Candy.find(params[:candy_id])
+        #  @candy = Candy.find(params[:candy_id])
+           @purchase = Purchase.find(params[:id])
+           
     end
     
     

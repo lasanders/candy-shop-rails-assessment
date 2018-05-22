@@ -10,10 +10,13 @@
 <p>Employee: <%= @user.employee %></p>
     
 <br></br>
+<h2>Purchase History</h2>
+<% @user.purchases.each do |purchase| %>
 
-
+<li><%= link_to "Purchase ID: #{purchase.id}", user_purchase_path(@user) %></li>
+<% end %>
 <%= link_to 'User candies', user_candies_path %> 
-<%= link_to 'See candies', candies_path %> 
+<%= link_to 'See candies', candies_path %>
 <%= link_to 'Edit User', edit_user_path(@user) %>
 <%= link_to 'Log Out', signout_path%>
     

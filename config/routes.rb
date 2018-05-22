@@ -25,7 +25,7 @@ Rails.application.routes.draw do
      resources :users do
        resources :purchases, only: [:new]
      end
-      resources :candies do
+      resources :users do
           resources :purchases, only: [:show]
   end
     resources :candies
