@@ -2,12 +2,14 @@
 
 
 
-
+<%= form_tag("/purchases", method: "post") do %>
+<%= hidden_field_tag :user_id, value = current_user.id %><br>
+<%= hidden_field_tag :candy_id, value = candy.id %>
 <h3><li><%= @purchase.candy.name %></li></h3>
 Cost of candy: <%= @purchase.candy.cost %> dollars<br>
 Candy flavor: <%= @purchase.candy.taste %><br>
 Candy appetite rating: <%= @purchase.candy.appetite %><br>
-
+<% end %>
 
 
 <br></br>

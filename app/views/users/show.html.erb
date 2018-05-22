@@ -15,10 +15,12 @@
 
 <li><%= link_to "Purchase ID: #{purchase.id}", user_purchase_path(@user) %></li>
 <% end %>
+<br>
+<%= link_to 'New Purchases', new_user_purchase_path(@user) %> 
 <%= link_to 'User candies', user_candies_path %> 
 <%= link_to 'See candies', candies_path %>
 <%= link_to 'Edit User', edit_user_path(@user) %>
-<%= link_to 'Log Out', signout_path%>
+<%= link_to 'Log Out', signout_path %>
     
 
     
