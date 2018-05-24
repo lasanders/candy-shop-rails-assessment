@@ -2,6 +2,23 @@ class Purchase < ApplicationRecord
     belongs_to:user
     belongs_to:candy
     
+    def user_name
+    self.try(:user).try(:name)
+  end
+
+  def user_name=(name)
+    user = User.find_or_create_by(name: name)
+    self.user = user
+  end
+  
+  def candy_name
+    self.try(:candy).try(:name)
+  end
+
+  def candy_name=(name)
+    candy = Candy.find_or_create_by(name: name)
+    self.candy = candy
+  end
     
 
     def cash_issue

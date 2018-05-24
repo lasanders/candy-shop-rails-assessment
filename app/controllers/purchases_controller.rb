@@ -1,20 +1,25 @@
 class PurchasesController < ApplicationController
     before_action :current_user
+def index
+@user.purchases = Purchase.all
+end
     
        def show
-         
-           @purchase = Purchase.find(params[:user_id], params[:candy_id])
+    #   candy = Candy.find_by(id: params[:candy_id])
+       @user = User.find_by(id: params[:user_id])
+      @purchase = @user.purchases.find_by(id: params[:id])
        end
     
     
   def new
-      @user = User.find(params[:user_id])
+      
+    #   @user = User.find(params[:user_id])
    @purchase = Purchase.new
   
   end
   
   def create
-       @purchase = Purchase.new(:user_id => params[:user_id], :candy_id => params[:candy_id], :payment_type => params[:payment_type])
+       @purchase = Purchase.new(:user_id => params[:user_id], :candy_id => params[:candy_id])
     if @purchase.get_cavities
      @purchase.save
     end
@@ -28,7 +33,7 @@ class PurchasesController < ApplicationController
 private
 
 def purchase_params
-params.require(:purchase).permit(:user_id, :candy_id, :payment_type)
+params.require(:purchase).permit(:user_id, :candy_id)
 end
 end
 

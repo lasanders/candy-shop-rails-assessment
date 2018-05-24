@@ -5,8 +5,12 @@ class Candy < ApplicationRecord
     validates :cost, :appetite, :count, numericality: { only_integer: true }
     validates :taste, inclusion: {in: %w(sweet sour), message: ": Please choose sweet or sour" }
 
+ 
+
     scope :sour, -> { where(taste: 'sour') }
     scope :sweet, -> {where(taste: 'sweet')}
+    
+
 end
 
 

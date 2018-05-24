@@ -64,7 +64,7 @@ def set_candy
 end
 
 def candy_params
-params.require(:candy).permit(:name, :taste, :cost, :appetite, :count)
+params.require(:candy).permit(:name, :taste, :cost, :appetite, :count, user_attributes: [:name, :password, :taste, :cash, :appetite, :employee], user_ids: [], purchases_attributes: [:candy_id, :user_id], purchase_ids: [])
 end
 
 end

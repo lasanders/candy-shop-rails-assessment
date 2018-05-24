@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   # resources :purchases
+   root 'users#home'
     
- root 'users#home'
+
     get '/users' => 'users#new'
  
     post '/users' => 'users#create'
@@ -14,8 +15,9 @@ Rails.application.routes.draw do
     post '/users/:id/candies' => 'users#candies'
     #   get '/users/:user_id/purchases/new' => 'purchases#new', as: 'user_new_purchase'
     #  post '/users/:user_id/purchases/create' => 'purchases#create'
-    # get '/users/:user_id/purchases/:id' => 'purchases#show', as: 'user_purchase'
-    #  post '/users/:user_id/purchases/:id' => 'purchases#show'
+     # get '/users/:user_id/purchases/:id' => 'purchases#show', as: 'user_purchase'
+     # post '/users/:user_id/purchases/:id' => 'purchases#show'
+
    get '/signout', to: 'sessions#destroy'
    delete '/signout', to: 'sessions#destroy'
    get '/signout', to: 'sessions#other_destroy'
@@ -23,15 +25,16 @@ Rails.application.routes.draw do
    get '/delete', to: 'candies#destroy'
    post '/delete', to: 'candies#destroy'
   post '/purchases', to: 'purchases#create'
-
-     resources :users do
-       resources :purchases, only: [:new, :show]
+  
+   resources :users do
+       resources :purchases, only: [:show, :new]
+        
      end
-      resources :candies do
-          resources :purchases, only: [:new, :show]
-  end
-    resources :candies
+    
+  
     resources :users
+      resources :candies
+    resources :purchases
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
 
