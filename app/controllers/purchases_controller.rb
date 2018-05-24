@@ -1,10 +1,6 @@
 class PurchasesController < ApplicationController
     before_action :current_user
-# def index
-# @purchases = Purchase.all
-#  @purchase = @user.purchases.find_by(id: params[:id])
-# end
-    
+
        def show
     #   candy = Candy.find_by(id: params[:candy_id])
        @user = User.find_by(id: params[:user_id])
@@ -13,7 +9,7 @@ class PurchasesController < ApplicationController
     
     
   def new
-      
+       @message = params[:message]
     #   @user = User.find(params[:user_id])
    @purchase = Purchase.new
   
@@ -30,6 +26,15 @@ class PurchasesController < ApplicationController
     redirect_to user_path(@purchase.user, :message => @message)
 
   end
+  
+     def purchase_error
+     if @purchase.errors.any?
+        # pluralize(@user.errors.count, "error") 
+     @purchase.errors.full_messages.each do |msg|
+         @error = msg
+     end
+     end
+    end
   
 private
 

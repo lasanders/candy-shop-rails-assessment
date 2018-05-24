@@ -1,6 +1,7 @@
 class Purchase < ApplicationRecord
     belongs_to:user
     belongs_to:candy
+
     
     def user_name
     self.try(:user).try(:name)
@@ -97,8 +98,5 @@ class Purchase < ApplicationRecord
     end
     end
     
-#   def self.count
-#       candy.count
-#      end
 end
 

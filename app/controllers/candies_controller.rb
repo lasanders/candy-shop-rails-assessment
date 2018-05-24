@@ -3,11 +3,12 @@ before_action:set_candy, only: [:show, :edit, :update, :destroy]
 def index
 @candies= Candy.all
 @purchases= Purchase.all
+
 end
 
 def show
   @candy= Candy.find(params[:id])
-@message= params[:message]
+
 end
 
 
@@ -40,13 +41,6 @@ render:edit
     end
 end
 
-def candy_error
-     if @candy.errors.any?
-     @candy.errors.full_messages.each do |msg|
-@error= msg
-     end
-     end
-end
 
 def destroy
 
