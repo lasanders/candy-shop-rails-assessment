@@ -1,8 +1,9 @@
 class PurchasesController < ApplicationController
     before_action :current_user
-def index
-@user.purchases = Purchase.all
-end
+# def index
+# @purchases = Purchase.all
+#  @purchase = @user.purchases.find_by(id: params[:id])
+# end
     
        def show
     #   candy = Candy.find_by(id: params[:candy_id])

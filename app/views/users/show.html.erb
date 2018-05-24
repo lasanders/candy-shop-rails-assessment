@@ -13,7 +13,7 @@
 <h2>Purchase History</h2>
 <% @user.purchases.each do |purchase| %>
 
-<li><%= link_to "Purchase ID: #{purchase.id}, Candy ID: #{purchase.candy_id}", user_purchase_path(@user.id, purchase) %></li>
+<li><%= link_to "Purchase ID: #{purchase.id}", user_purchase_path(@user.id, purchase) %></li>
 <% end %>
 <br>
 <%= link_to 'New Purchases', new_user_purchase_path(@user) %> 
