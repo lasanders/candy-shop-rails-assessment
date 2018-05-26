@@ -4,8 +4,8 @@
    <%= form_tag("/purchases", method: "post") do %>
  <%= hidden_field_tag :user_id, value = current_user.id %><br />
  <%= hidden_field_tag :candy_id, value = candy.id %><br />
-    <li> <%= label_tag :payment_type %><br><%= text_field_tag :payment_type %><%= candy.count %> <%= " #{candy.name} available for purchase" %> <%= submit_tag 'Purchase Candy', :class => 'btn btn-primary' %></li>
-    <% end %>
+    <li><%= candy.count %> <%= " #{candy.name} available for purchase" %><br><%= label_tag :payment_type %><br><%= text_field_tag :payment_type %><%= submit_tag 'Purchase Candy', :class => 'btn btn-primary' %></li>
+   <% end %>
  <% end %>
 
     <h2>Sweet Candies</h2>
@@ -13,7 +13,7 @@
   <%= form_tag("/purchases", method: "post") do %>
  <%= hidden_field_tag :user_id, value = current_user.id %><br />
  <%= hidden_field_tag :candy_id, value = candy.id %><br />
-    <li> <%= label_tag :payment_type %><br><%= text_field_tag :payment_type %><%= candy.count %> <%= " #{candy.name} available for purchase" %> <%= submit_tag 'Purchase Candy', :class => 'btn btn-primary' %></li>
+    <li><%= candy.count %> <%= " #{candy.name} available for purchase" %><br><%= label_tag :payment_type %><br><%= text_field_tag :payment_type %><%= submit_tag 'Purchase Candy', :class => 'btn btn-primary' %></li>
     <% end %>
  <% end %>
    <br></br> 
