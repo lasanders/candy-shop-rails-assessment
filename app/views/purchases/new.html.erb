@@ -4,8 +4,12 @@
     <%= form_tag("/purchases", method: "post") do %>
     <%= hidden_field_tag :user_id, value = current_user.id %><br>
     <%= hidden_field_tag :candy_id, value = candy.id %>
+ <%= form_for @purchase do |f| %>   
 
-    <li><%= candy.count %> <%= " #{candy.name} available for purchase" %> <%= submit_tag 'Purchase Candy', :class => 'btn btn-primary' %></li>
+
+
+    <li><%= f.label :payment_type %><br><%= f.text_field :payment_type %><%= candy.count %> <%= " #{candy.name} available for purchase" %> <%= submit_tag 'Purchase Candy', :class => 'btn btn-primary' %></li>
+    <% end %>
     <% end %>
  <% end %>
 
@@ -14,15 +18,17 @@
     <%= form_tag("/purchases", method: "post") do %>
     <%= hidden_field_tag :user_id, value = current_user.id %><br>
     <%= hidden_field_tag :candy_id, value = candy.id %>
+    
+    <%= form_for @purchase do |f| %>   
 
-    <li><%= candy.count %> <%= " #{candy.name} available for purchase" %> <%= submit_tag 'Purchase Candy', :class => 'btn btn-primary' %></li>
+
+
+    <li><%= f.label :payment_type %><br><%= f.text_field :payment_type %><%= candy.count %> <%= " #{candy.name} available for purchase" %> <%= submit_tag 'Purchase Candy', :class => 'btn btn-primary' %></li>
     <% end %>
  <% end %>
    <br></br> 
     
-<%= form_for @purchase do |f| %>   
-<%= f.label :payment_type %><br>
-<%= f.text_field :payment_type %><br>
+
 
 
 <% end %>

@@ -55,7 +55,7 @@ end
     end
     
     def user_params
-        params.require(:user).permit(:name, :password, :taste, :cash, :appetite, :employee, candy_ids: [], purchases_attributes: [:candy_id, :user_id], purchase_ids: [], candies_attributes: [:name, :taste, :appetite, :cost])
+        params.require(:user).permit(:name, :password, :taste, :cash, :appetite, :employee, candy_ids: [], purchases_attributes: [:candy_id, :user_id, :payment_type], purchase_ids: [], candies_attributes: [:name, :taste, :appetite, :cost])
 
 end
 end

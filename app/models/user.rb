@@ -5,7 +5,8 @@ class User < ActiveRecord::Base
     validates_presence_of :taste, :cash, :appetite
     validates :cash, :appetite, numericality: { only_integer: true }
     validates :taste, inclusion: {in: %w(sweet sour), message: ": Please choose sweet or sour" }
-    
+    accepts_nested_attributes_for :purchases
+     
     scope :full, -> { where('appetite >= 75')}
     scope :satisfied, -> { where('appetite >=50' && 'appetite < 75')}
     scope :hungry, -> { where('appetite >=0' && 'appetite < 50')}

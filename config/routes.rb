@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     #  post '/users/:user_id/purchases/create' => 'purchases#create'
      # get '/users/:user_id/purchases/:id' => 'purchases#show', as: 'user_purchase'
      # post '/users/:user_id/purchases/:id' => 'purchases#show'
-
+   patch '/purchases', to: 'purchases#show'
    get '/signout', to: 'sessions#destroy'
    delete '/signout', to: 'sessions#destroy'
    get '/signout', to: 'sessions#other_destroy'
