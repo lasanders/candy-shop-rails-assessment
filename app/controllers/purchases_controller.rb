@@ -11,7 +11,7 @@ class PurchasesController < ApplicationController
   def new
        @message = params[:message]
    
-   @purchase = Purchase.new(purchase_params)
+   @purchase = Purchase.new(:user_id => params[:user_id], :candy_id => params[:candy_id])
   
   end
   
